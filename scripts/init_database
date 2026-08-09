@@ -1,4 +1,7 @@
-/*create database and schemas
+/*
+===================================
+create database and schemas
+===================================
 script Purpose:
     This scripts create a new database named 'DataWarehouse' and scripts for setup three schemas 
     within the database: 'bronze','silver', 'gold'
