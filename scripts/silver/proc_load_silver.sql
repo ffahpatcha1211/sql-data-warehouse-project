@@ -48,7 +48,7 @@ BEGIN
          cst_key,
          cst_firstname ,
          cst_lastname,
-         cst_material_status ,
+         cst_marital_status ,
          cst_gndr ,
          cst_create_date)
         SELECT 
@@ -56,10 +56,10 @@ BEGIN
         cst_key,
         TRIM(cst_firstname) AS cst_firstname, -- remove unwanted spaces
         TRIM(cst_lastname) AS cst_lastname, -- Normalize marital status values to readable format
-        CASE WHEN UPPER(TRIM(cst_material_status)) = 'S' THEN 'Single'
-	         WHEN UPPER(TRIM(cst_material_status)) = 'M' THEN 'Married'
+        CASE WHEN UPPER(TRIM(cst_marital_status)) = 'S' THEN 'Single'
+	         WHEN UPPER(TRIM(cst_marital_status)) = 'M' THEN 'Married'
 	         ELSE 'n/a' -- handling missing data 
-        END cst_material_status, -- Normalize gender values to readable format
+        END cst_marital_status, -- Normalize gender values to readable format
         CASE WHEN UPPER(TRIM(cst_gndr)) = 'F' THEN 'Female'
 	         WHEN UPPER(TRIM(cst_gndr)) = 'M' THEN 'Man'
 	         ELSE 'n/a'
