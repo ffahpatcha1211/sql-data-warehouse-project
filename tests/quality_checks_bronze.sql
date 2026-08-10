@@ -12,7 +12,7 @@ Script Purpose:
     - Data consistency between related fields.
 
 Usage Notes:
-    - Run these checks data in Bronze Layer.
+    - Run these for checking data in Bronze Layer.
 ===============================================================================
 */
 
