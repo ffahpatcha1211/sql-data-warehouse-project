@@ -14,9 +14,14 @@ Usage:
 ===============================================================================
 */
 
--- =============================================================================
--- Create Dimension: gold.dim_customers
--- =============================================================================
+/*
+=================================
+ gold layer : customer dimension
+=================================
+*/
+--Data Integration Checks
+--rename coulumn
+--create surrogate key
 IF OBJECT_ID('gold.dim_customers', 'V') IS NOT NULL
     DROP VIEW gold.dim_customers;
 GO
@@ -43,9 +48,15 @@ LEFT JOIN silver.erp_loc_a101 la
     ON ci.cst_key = la.cid;
 GO
 
--- =============================================================================
--- Create Dimension: gold.dim_products
--- =============================================================================
+/*
+=================================
+ gold layer : product dimension
+=================================
+*/
+--crm_prd_info contain history&current data : if doesn't have any requirment we can stay at current information 
+    -- if end date is null then it is current info of  the product
+--rename coulumn
+--create surrogate key
 IF OBJECT_ID('gold.dim_products', 'V') IS NOT NULL
     DROP VIEW gold.dim_products;
 GO
@@ -69,9 +80,13 @@ LEFT JOIN silver.erp_px_cat_g1v2 pc
 WHERE pn.prd_end_dt IS NULL; -- Filter out all historical data
 GO
 
--- =============================================================================
--- Create Fact Table: gold.fact_sales
--- =============================================================================
+/*
+=================================
+ gold layer : fact
+=================================
+*/
+--building fact : use the dimension’s surrogate keys instead of IDs to easily connect facts with dimesnsions 
+--dont need original product key from the source system (want surrogate key that we create in dw) 
 IF OBJECT_ID('gold.fact_sales', 'V') IS NOT NULL
     DROP VIEW gold.fact_sales;
 GO
