@@ -61,7 +61,7 @@ BEGIN
 	         ELSE 'n/a' -- handling missing data 
         END cst_marital_status, -- Normalize gender values to readable format
         CASE WHEN UPPER(TRIM(cst_gndr)) = 'F' THEN 'Female'
-	         WHEN UPPER(TRIM(cst_gndr)) = 'M' THEN 'Man'
+	         WHEN UPPER(TRIM(cst_gndr)) = 'M' THEN 'Male'
 	         ELSE 'n/a'
         END cst_gndr,
         cst_create_date
